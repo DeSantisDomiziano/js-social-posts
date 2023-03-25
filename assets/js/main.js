@@ -77,6 +77,20 @@ const posts = [
 
 const container_post_el = document.getElementById('container')
 
+
+posts.forEach((post) => {
+    const italian_date = post.created.slice(8, 10) + '-' + post.created.slice(5, 7) + '-' + post.created.slice(0, 4)
+    post.created = italian_date
+   
+})
+
+
+
+
+generatore_posts()
+
+function generatore_posts() {
+
 posts.forEach((post) => {
 
     const post_markup = `
@@ -113,3 +127,4 @@ posts.forEach((post) => {
 
     container_post_el.insertAdjacentHTML('beforeend', post_markup)
 })
+}
