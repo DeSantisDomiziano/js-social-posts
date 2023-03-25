@@ -78,16 +78,34 @@ const posts = [
 const container_post_el = document.getElementById('container')
 
 
+
 posts.forEach((post) => {
     const italian_date = post.created.slice(8, 10) + '-' + post.created.slice(5, 7) + '-' + post.created.slice(0, 4)
     post.created = italian_date
-   
+})
+
+generatore_posts()
+
+posts.forEach((post, i) => {
+    
+    if(post.author.image == null) {
+        const container_img_profile = document.querySelectorAll('.post-meta__icon')  
+        container_img_profile[i].classList.add('profile-pic-default')
+
+        const img_profile = document.querySelectorAll('.profile-pic')
+        img_profile[i].classList.add('d-none')
+
+        const string_to_array = post.author.name.split(' ')
+        const iniziali_nome = string_to_array[0].charAt(0) + string_to_array[1].charAt(0)
+
+        const text_instead_img = document.createElement('span')
+        text_instead_img.innerHTML = iniziali_nome
+
+        container_img_profile[i].insertAdjacentElement('beforeend', text_instead_img)
+    }
 })
 
 
-
-
-generatore_posts()
 
 function generatore_posts() {
 

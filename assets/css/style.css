@@ -11,6 +11,10 @@ body {
     font-size: 100%;
 }
 
+.d-none {
+    display: none;
+}
+
 h1 {
     font-size: calc(1.5rem + 2vw);
     color: white;
