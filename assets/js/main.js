@@ -74,18 +74,20 @@ const posts = [
         "created": "2021-03-05"
     }
 ];
-
+const id_like = []
 const container_post_el = document.getElementById('container')
 
-
-
+//CONVERTITORE IN DATA ITALIANA
 posts.forEach((post) => {
     const italian_date = post.created.slice(8, 10) + '-' + post.created.slice(5, 7) + '-' + post.created.slice(0, 4)
     post.created = italian_date
 })
 
+
 generatore_posts()
 
+
+//IN CASO L'UTENTE NON AVESSE L'IMMAGINE O FOSSE ROTTA LA SOSTITUIAMO CON LE INIZIALI DEL NOME
 posts.forEach((post, i) => {
     
     if(post.author.image == null) {
@@ -104,7 +106,6 @@ posts.forEach((post, i) => {
         container_img_profile[i].insertAdjacentElement('beforeend', text_instead_img)
     }
 })
-
 
 
 function generatore_posts() {
@@ -146,3 +147,20 @@ posts.forEach((post) => {
     container_post_el.insertAdjacentHTML('beforeend', post_markup)
 })
 }
+
+posts.forEach((post, i) => {
+
+    const likes_site_el = document.querySelectorAll('.js-like-button')
+    likes_site_el[i].addEventListener('click', function() {
+        event.preventDefault()
+
+        this.classList.toggle('like-button--liked')
+        
+        const liked = document.querySelectorAll('b')
+        if (!this.classList.contains('like-button--liked')) {
+            liked[i].innerHTML = post.likes 
+        } else {
+            liked[i].innerHTML = post.likes + 1
+        }    
+    })
+})
