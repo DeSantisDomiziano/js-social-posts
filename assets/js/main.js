@@ -74,7 +74,6 @@ const posts = [
         "created": "2021-03-05"
     }
 ];
-const id_like = []
 const container_post_el = document.getElementById('container')
 
 //CONVERTITORE IN DATA ITALIANA
